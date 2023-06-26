@@ -1,0 +1,67 @@
+.containerBlogEvents {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+.titleSection {
+  font-family: Futura;
+  font-weight: 500;
+  font-size: 48px;
+  text-align: center;
+  padding: 6rem 0 4rem 0;
+  margin: 0;
+}
+.containerBlog {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 6rem;
+}
+.containerBlog:hover {
+  background-color: #eaaa3b;
+}
+.containerEvents {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 6rem;
+}
+.containerEvents:hover {
+  background-color: #eaaa3b;
+}
+.event {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  padding: 0 2rem;
+  justify-items: center;
+}
+.event p {
+  font-size: 16px;
+}
+.blog {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  padding: 0 2rem;
+  justify-items: center;
+}
+.blog p {
+  font-size: 16px;
+}
+.blog:nth-last-child(0) {
+  padding-bottom: 4rem;
+}
+.containerCalendar {
+  background-color: #eaaa3b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.googleCalendarContainer {
+  position: relative;
+  width: 80%;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+}
