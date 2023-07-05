@@ -59,16 +59,30 @@ export default function RootLayout({ children }) {
         <footer className="footerContainer">
           <div className="containerLinks">
             <div className="icon">
-              <Image layout="fill" objectFit="contain" src={email} />
+              <a href="mailto:iamclimate.earth@gmail.com">
+                <Image layout="fill" objectFit="contain" src={email} />
+              </a>
             </div>
             <div className="icon">
-              <Image layout="fill" objectFit="contain" src={phone} />
+              <a href="tel:00415675656">
+                <Image layout="fill" objectFit="contain" src={phone} />
+              </a>
             </div>
             <div className="icon">
-              <Image layout="fill" objectFit="contain" src={insta} />
+              <a
+                target="_blank"
+                href="https://www.instagram.com/iamclimate.earth/"
+              >
+                <Image layout="fill" objectFit="contain" src={insta} />
+              </a>
             </div>
           </div>
-          <p className="copyright">{`© Copyright - ${year} Joel Kuehl Web & Software Development`}</p>
+          <a
+            style={{ textDecoration: "none" }}
+            href="https://www.joelkuehl.ch/"
+          >
+            <p className="copyright">{`© Copyright - ${year} Joel Kuehl Web & Software Development`}</p>
+          </a>
         </footer>
       </body>
     </html>
