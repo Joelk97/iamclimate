@@ -21,6 +21,9 @@
 .containerBlog:hover {
   background-color: #eaaa3b;
 }
+.containerBlog:hover .buttonMore {
+  background-color: #fafafa;
+}
 .containerEvents {
   width: 100%;
   display: flex;
@@ -30,6 +33,9 @@
 }
 .containerEvents:hover {
   background-color: #eaaa3b;
+}
+.containerEvents:hover .buttonMore {
+  background-color: #fafafa;
 }
 .event {
   display: grid;
@@ -62,6 +68,20 @@
   position: relative;
   width: 80%;
   height: 500px;
-  margin: 0;
   padding: 0;
+  margin: 0 0 4rem 0;
+}
+.buttonMore {
+  width: fit-content;
+  align-self: center;
+  margin-top: 4rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 15px;
+  background-color: #eaaa3b;
+  font-family: Futura;
+  font-size: 16px;
+}
+.buttonMore:hover {
+  cursor: pointer;
 }
