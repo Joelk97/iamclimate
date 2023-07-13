@@ -1,0 +1,45 @@
+.containerProgetti {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4rem 6rem;
+  column-gap: 4rem;
+  row-gap: 6rem;
+  justify-content: space-around;
+}
+.schedaProgetto {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.schedaProgetto h1 {
+  font-family: Futura;
+  font-weight: 500;
+  font-size: 36px;
+  margin: 0;
+}
+.schedaProgetto p {
+  font-family: Futura;
+  font-weight: 500;
+  font-size: 16px;
+  margin: 0;
+}
+.imageProject {
+  width: 250px;
+  height: 200px;
+  position: relative;
+}
+
+.buttonMore {
+  width: fit-content;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 15px;
+  background-color: #eaaa3b;
+  font-family: Futura;
+  font-size: 16px;
+}
+.buttonMore:hover {
+  cursor: pointer;
+}

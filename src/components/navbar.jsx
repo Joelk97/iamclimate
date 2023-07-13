@@ -22,7 +22,7 @@ const Navbar = (props) => {
             <Link href="/chi-siamo">Chi siamo</Link>
           </li>
           <li>
-            <p>Progetti</p>
+            <Link href="/progetti">Progetti</Link>
           </li>
           <li>
             <p>Eventi</p>
