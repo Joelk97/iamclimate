@@ -6,14 +6,26 @@ import Image from "next/legacy/image";
 import googleCalendar from "../../public/googleCalendar.png";
 import { useState } from "react";
 import stylesContact from "./contact.module.css";
+import Link from "next/link";
+import email from "../../public/icons/mi_email.svg";
+import phone from "../../public/icons/phone.svg";
+import insta from "../../public/icons/insta.svg";
+import Navbar from "@/components/navbar";
+import OrangeBanner from "@/components/orangeBanner";
+import Footer from "@/components/footer";
+import ContactForm from "@/components/contactForm";
 
 export default function Home() {
+  const date = new Date();
+  const year = date.getFullYear();
   const [darkMode, setDarkMode] = useState(false);
   const changeMode = () => {
     setDarkMode(!darkMode);
   };
   return (
     <div className={styles.main}>
+      <Navbar />
+      <OrangeBanner bannerText="Ecoligia, la valigia didattica" />
       <div className={styles.containerBlogEvents}>
         <div className={`${styles.containerBlog} ${styles.containerParallel}`}>
           <h1 className={`${styles.titleBlogEvents} ${styles.titleSection}`}>
@@ -93,7 +105,12 @@ export default function Home() {
       <div className={styles.containerCalendar}>
         <h1 className={styles.titleSection}>Disponibilità della valigia</h1>
         <div className={styles.googleCalendarContainer}>
-          <Image src={googleCalendar} layout="fill" objectFit="contain" />
+          <Image
+            alt="google calendar"
+            src={googleCalendar}
+            layout="fill"
+            objectFit="contain"
+          />
         </div>
         <button
           className={styles.buttonMore}
@@ -107,26 +124,8 @@ export default function Home() {
           Scopri di più!
         </button>
       </div>
-      <div className={styles.containerRiservala}>
-        <h1 className={styles.titleSection}>Riservala ora!</h1>
-        <div className={stylesContact.contactModuleContainer}>
-          <div className={`${stylesContact.name} ${stylesContact.inputs}`}>
-            <label for="name">Nome</label>
-            <input type="text" name="name"></input>
-          </div>
-          <div className={`${stylesContact.email} ${stylesContact.inputs}`}>
-            <label for="email">Email</label>
-            <input type="text" name="email"></input>
-          </div>
-          <div className={`${stylesContact.message} ${stylesContact.inputs}`}>
-            <label for="message">Messaggio</label>
-            <input type="text" name="message"></input>
-          </div>
-          <button className={`${styles.buttonMore} ${stylesContact.button}`}>
-            Invia
-          </button>
-        </div>
-      </div>
+      <ContactForm title="Riservala ora!" />
+      <Footer />
     </div>
   );
 }
