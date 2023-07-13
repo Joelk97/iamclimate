@@ -16,7 +16,7 @@ import Footer from "@/components/footer";
 import stylesProgetti from "../progetti.module.css";
 import ContactForm from "@/components/contactForm";
 
-export default function ChiSiamo() {
+export default function Progetti() {
   const [darkMode, setDarkMode] = useState(false);
   const changeMode = () => {
     setDarkMode(!darkMode);

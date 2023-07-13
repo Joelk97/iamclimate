@@ -25,7 +25,7 @@ const Navbar = (props) => {
             <Link href="/progetti">Progetti</Link>
           </li>
           <li>
-            <p>Eventi</p>
+            <Link href="/eventi">Eventi</Link>
           </li>
         </ul>
       </div>

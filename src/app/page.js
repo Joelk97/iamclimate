@@ -67,7 +67,14 @@ export default function Home() {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
           </div>
-          <button className={styles.buttonMore}>Altri blog</button>
+          <button className={styles.buttonMore}>
+            <Link
+              style={{ textDecoration: "none", color: "#050505" }}
+              href="/blog"
+            >
+              Altri blog
+            </Link>
+          </button>
         </div>
         <div
           className={`${styles.containerEvents} ${styles.containerParallel}`}
@@ -99,7 +106,14 @@ export default function Home() {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
           </div>
-          <button className={styles.buttonMore}>Altri eventi</button>
+          <button className={styles.buttonMore}>
+            <Link
+              style={{ textDecoration: "none", color: "#050505" }}
+              href="/eventi"
+            >
+              Altri eventi
+            </Link>
+          </button>
         </div>
       </div>
       <div className={styles.containerCalendar}>
