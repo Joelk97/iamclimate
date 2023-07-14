@@ -8,12 +8,23 @@
   text-align: left;
   width: 100%;
 }
+.titleEvent {
+  font-family: Futura;
+  font-size: 22px;
+  font-weight: 400;
+}
+.testoEvent {
+  width: 100%;
+  text-align: left;
+}
 .containerEvento {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   column-gap: 4em;
+  align-items: baseline;
 }
 .containerEvento p {
   font-size: 16px;

@@ -1,10 +1,8 @@
-import { createClient } from 'next-sanity'
-
-import { apiVersion, dataset, projectId, useCdn } from '../env'
+import { createClient } from "next-sanity";
 
 export const client = createClient({
-  apiVersion,
-  dataset,
-  projectId,
-  useCdn,
-})
+  apiVersion: "2021-08-31",
+  dataset: "production",
+  projectId: "gano3dir",
+  useCdn: "true",
+});

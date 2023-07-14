@@ -1,10 +1,7 @@
-"use client";
-
 import styles from "./page.module.css";
 import "./globals.css";
 import Image from "next/legacy/image";
 import googleCalendar from "../../public/googleCalendar.png";
-import { useState } from "react";
 import stylesContact from "./contact.module.css";
 import Link from "next/link";
 import email from "../../public/icons/mi_email.svg";
@@ -14,14 +11,15 @@ import Navbar from "@/components/navbar";
 import OrangeBanner from "@/components/orangeBanner";
 import Footer from "@/components/footer";
 import ContactForm from "@/components/contactForm";
-
-export default function Home() {
+import { client } from "../../sanity/lib/client";
+import transformDate from "@/components/transformDate";
+const queryBlog = `*[_type == "blogPost"]|order(date desc)[0..2]`;
+const queryEvents = `*[_type == "events"]|order(date desc)[0..2]`;
+export default async function Home() {
+  const blogs = await client.fetch(queryBlog);
+  const events = await client.fetch(queryEvents);
   const date = new Date();
   const year = date.getFullYear();
-  const [darkMode, setDarkMode] = useState(false);
-  const changeMode = () => {
-    setDarkMode(!darkMode);
-  };
   return (
     <div className={styles.main}>
       <Navbar />
@@ -31,42 +29,17 @@ export default function Home() {
           <h1 className={`${styles.titleBlogEvents} ${styles.titleSection}`}>
             Blog
           </h1>
-          <div className={styles.blog}>
-            <p>26.06.2023</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
-          <div className={styles.blog}>
-            <p>26.06.2023</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
-          <div className={styles.blog}>
-            <p>26.06.2023</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
+          {blogs.map((e, i) => {
+            return (
+              <div className={styles.blog} key={i}>
+                <p>{transformDate(e.date)}</p>
+                <div className={styles.testoBlog}>
+                  <h1 className={styles.titleBlog}>{e.title.it}</h1>
+                  <p className={styles.textBlog}>{e.intro.it}</p>
+                </div>
+              </div>
+            );
+          })}
           <button className={styles.buttonMore}>
             <Link
               style={{ textDecoration: "none", color: "#050505" }}
@@ -82,30 +55,18 @@ export default function Home() {
           <h1 className={`${styles.titleBlogEvents} ${styles.titleSection}`}>
             Eventi
           </h1>
-          <div className={styles.event}>
-            <p>26.06.2023</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
-          <div className={styles.event}>
-            <p>26.06.2023</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
+          {events.map((e, i) => {
+            return (
+              <div key={i} className={styles.event}>
+                <p>{transformDate(e.date)}</p>
+                <div className={styles.testoEvent}>
+                  <h1 className={styles.titleEvent}>{e.title.it}</h1>
+                  <p className={styles.textEvent}>{e.intro.it}</p>
+                </div>
+              </div>
+            );
+          })}
+
           <button className={styles.buttonMore}>
             <Link
               style={{ textDecoration: "none", color: "#050505" }}

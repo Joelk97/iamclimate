@@ -42,6 +42,7 @@
   grid-template-columns: 1fr 1.5fr;
   padding: 0 2rem;
   justify-items: center;
+  align-items: baseline;
 }
 .event p {
   font-size: 16px;
@@ -51,8 +52,10 @@
   grid-template-columns: 1fr 1.5fr;
   padding: 0 2rem;
   justify-items: center;
+  align-items: baseline;
 }
 .blog p {
+  margin: 1rem 0;
   font-size: 16px;
 }
 .blog:nth-last-child(0) {
@@ -84,4 +87,16 @@
 }
 .buttonMore:hover {
   cursor: pointer;
+}
+.titleBlog {
+  font-family: Futura;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 1rem 0;
+}
+.titleEvent {
+  font-family: Futura;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 1rem 0;
 }

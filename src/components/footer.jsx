@@ -2,6 +2,7 @@ import email from "../../public/icons/mi_email.svg";
 import phone from "../../public/icons/phone.svg";
 import insta from "../../public/icons/insta.svg";
 import Image from "next/legacy/image";
+import "../app/globals.css";
 
 const Footer = (props) => {
   const date = new Date();
