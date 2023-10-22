@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "18": "^0.0.0",
     "@portabletext/react": "^3.0.11",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.18.1",
@@ -18,7 +19,8 @@
     "react": "^18",
     "react-dom": "^18",
     "sanity": "^3.18.1",
-    "styled-components": "5.2"
+    "styled-components": "5.2",
+    "styled-jsx": "^5.1.2"
   },
   "devDependencies": {
     "@types/node": "^20",
