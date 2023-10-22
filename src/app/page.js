@@ -32,7 +32,9 @@ export default async function Home() {
           {blogs.map((e, i) => {
             return (
               <div className={styles.blog} key={i}>
-                <p>{transformDate(e.date)}</p>
+                <p style={{ justifySelf: "flex-start" }}>
+                  {transformDate(e.date)}
+                </p>
                 <div className={styles.testoBlog}>
                   <h1 className={styles.titleBlog}>{e.title.it}</h1>
                   <p className={styles.textBlog}>{e.intro.it}</p>
@@ -58,7 +60,9 @@ export default async function Home() {
           {events.map((e, i) => {
             return (
               <div key={i} className={styles.event}>
-                <p>{transformDate(e.date)}</p>
+                <p style={{ justifySelf: "flex-start" }}>
+                  {transformDate(e.date)}
+                </p>
                 <div className={styles.testoEvent}>
                   <h1 className={styles.titleEvent}>{e.title.it}</h1>
                   <p className={styles.textEvent}>{e.intro.it}</p>
