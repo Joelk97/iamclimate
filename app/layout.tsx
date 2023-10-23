@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} bg-white dark:bg-black`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main>
+          <main className={`bg-white dark:bg-black`}>
             <Navbar />
 
             {children}

@@ -1,13 +1,13 @@
-import blockContent from "./blockContent";
-import blogPost from "./blogPost";
-import chiSiamo from "./chiSiamo";
-import eventi from "./eventi";
-import BlockContent from "./locale/BlockContent";
-import Slug from "./locale/Slug";
-import String from "./locale/String";
-import Text from "./locale/Text";
-import members from "./members";
-import slogan from "./slogan";
+import blockContent from "./schemas/blockContent";
+import blogPost from "./schemas/blogPost";
+import chiSiamo from "./schemas/chiSiamo";
+import eventi from "./schemas/eventi";
+import BlockContent from "./schemas/locale/BlockContent";
+import Slug from "./schemas/locale/Slug";
+import String from "./schemas/locale/String";
+import Text from "./schemas/locale/Text";
+import members from "./schemas/members";
+import slogan from "./schemas/slogan";
 
 export const schema = {
   types: [
