@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
-const RiservaOra = () => {
+const Contattaci = () => {
   const [name, setName] = useState<string | null>();
   const [email, setEmail] = useState<string | null>();
   const [message, setMessage] = useState<string | null>();
@@ -11,7 +11,7 @@ const RiservaOra = () => {
     if (name && email && message) {
       const formData = new FormData(e.target as HTMLFormElement);
       formData.append("access_key", `d4f938ae-020e-44b9-9d79-7c746ccfe791`);
-      formData.append("Pagina del form", "Riserva ora la valigia");
+      formData.append("Pagina del form", "Contattaci");
       const object = Object.fromEntries(formData);
       const json = JSON.stringify(object);
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -31,7 +31,7 @@ const RiservaOra = () => {
   return (
     <div className="py-24 flex flex-col gap-16 items-center">
       <h1 className="text-5xl bg-white dark:bg-black dark:text-white">
-        Riservala ora!
+        Contattaci
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-8">
         <div className="flex flex-row gap-24">
@@ -75,6 +75,7 @@ const RiservaOra = () => {
           />
         </div>
         <button
+          disabled={!name || !email || !message}
           type="submit"
           className="self-center mt-8 px-6 py-3 w-1/2 rounded-xl text-2xl dark:text-white dark:bg-orange text-black bg-orange"
         >
@@ -84,4 +85,4 @@ const RiservaOra = () => {
     </div>
   );
 };
-export default RiservaOra;
+export default Contattaci;

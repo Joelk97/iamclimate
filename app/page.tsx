@@ -12,6 +12,7 @@ import Disponibilita from "./components/calendarioDispo";
 import RiservaOra from "./components/riservaOra";
 import React, { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
+import { useRouter } from "next/navigation";
 interface Slogan {
   content?: {
     it: string;
@@ -22,6 +23,7 @@ const queryEvents = `*[_type == "events"]|order(date desc)[0..2]`;
 const querySlogan = `*[_type == "slogan"][0]`;
 
 const Home: React.FC = () => {
+  const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [blogs, setBlogs] = useState<[] | null>();
   const [events, setEvents] = useState<[] | null>();
@@ -43,6 +45,7 @@ const Home: React.FC = () => {
     getEvents();
     getSlogan();
   }, []);
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-between font-Futura">
       <Link href={`/`}>
@@ -55,7 +58,7 @@ const Home: React.FC = () => {
       </Link>
 
       <OrangeBanner content={slogan?.content?.it || ""} />
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-2 gap-6 w-full">
         <ThreeElements title="Blog" elements={blogs} />
         <ThreeElements title="Eventi" elements={events} />
       </div>

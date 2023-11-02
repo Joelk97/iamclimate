@@ -51,9 +51,11 @@ const Footer = () => {
           />
         </Link>
       </div>
-      <span className="text-xs">
-        © Copyright - {year} Joel Kuehl Web & Software Development
-      </span>
+      <Link href={`https://www.joelkuehl.ch/`} target="_blank">
+        <span className="text-xs">
+          © Copyright - {year} Joel Kuehl Web & Software Development
+        </span>
+      </Link>
     </div>
   );
 };
