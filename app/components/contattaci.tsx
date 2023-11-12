@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 
 const Contattaci = () => {
   const [name, setName] = useState<string | null>();
+  const t = useTranslations("Home");
   const [email, setEmail] = useState<string | null>();
   const [message, setMessage] = useState<string | null>();
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -31,13 +33,13 @@ const Contattaci = () => {
   return (
     <div className="py-24 flex flex-col gap-16 items-center">
       <h1 className="text-5xl bg-white dark:bg-black dark:text-white">
-        Contattaci
+        {t("contattaci")}
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-8">
         <div className="flex flex-row gap-24">
           <div className="flex flex-col justify-start">
             <label className="text-2xl" htmlFor="name">
-              Nome
+              {t("nome")}
             </label>
             <input
               className="h-10 border-4 rounded-lg text-2xl dark:bg-black dark:text-white"
@@ -64,7 +66,7 @@ const Contattaci = () => {
         </div>
         <div className="flex flex-col justify-start">
           <label className="text-2xl" htmlFor="message">
-            Messaggio
+            {t("messaggio")}
           </label>
           <textarea
             className="h-20 border-4 rounded-lg text-2xl flex-wrap dark:bg-black dark:text-white"
@@ -79,7 +81,7 @@ const Contattaci = () => {
           type="submit"
           className="self-center mt-8 px-6 py-3 w-1/2 rounded-xl text-2xl dark:text-white dark:bg-orange text-black bg-orange"
         >
-          Invia
+          {t("invia")}
         </button>
       </form>
     </div>

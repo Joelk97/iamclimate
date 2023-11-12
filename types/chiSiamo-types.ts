@@ -1,34 +1,18 @@
 import { PortableTextBlock, TypedObject } from "sanity";
-
+type Index = {
+  [key: string]: string;
+};
+type IndexPortable = {
+  [key: string]: PortableTextBlock[];
+};
 export interface ChiSiamo {
-  text: {
-    it: PortableTextBlock[];
-    en?: PortableTextBlock[];
-  };
-  textStatutes: {
-    it: PortableTextBlock[];
-    en?: PortableTextBlock[];
-  };
-  titleMembers: {
-    it: string;
-    en?: string;
-  };
-  titleStatutes: {
-    it: string;
-    en?: string;
-  };
-  titleAboutUs: {
-    it: string;
-    en?: string;
-  };
-  textMembers: {
-    it: PortableTextBlock[];
-    en?: PortableTextBlock[];
-  };
-  title: {
-    it: string;
-    en?: string;
-  };
+  text: IndexPortable;
+  textStatutes: IndexPortable;
+  titleMembers: Index;
+  titleStatutes: Index;
+  titleAboutUs: Index;
+  textMembers: IndexPortable;
+  title: Index;
   members: member[];
 }
 export type member = {

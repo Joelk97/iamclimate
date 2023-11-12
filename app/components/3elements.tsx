@@ -1,10 +1,12 @@
 import React from "react";
+import { useLocale, useTranslations } from "next-intl";
 
+type Intro = {
+  [key: string]: string;
+};
 interface Element {
   date: string;
-  intro?: {
-    it: string;
-  };
+  intro?: Intro;
 }
 
 interface ThreeElementsProps {
@@ -13,6 +15,8 @@ interface ThreeElementsProps {
 }
 
 const ThreeElements: React.FC<ThreeElementsProps> = ({ title, elements }) => {
+  const t = useTranslations("Home");
+  const locale = useLocale();
   return (
     <div className=" group flex flex-col items-center px-20 hover:bg-orange dark:hover:text-black py-24 gap-20">
       <h1 className="text-5xl">{title}</h1>
@@ -22,14 +26,16 @@ const ThreeElements: React.FC<ThreeElementsProps> = ({ title, elements }) => {
           elements.map((e, i) => {
             return (
               <li key={i} className="w-full flex flex-row gap-16 text-base">
-                <span className="whitespace-nowrap">{e.date}</span>
-                <p>{e.intro?.it}</p>
+                <span className="whitespace-nowrap">
+                  {e?.intro?.[locale] && e.date}
+                </span>
+                <p>{e.intro?.[locale]}</p>
               </li>
             );
           })}
       </ul>
       <button className="px-4 py-2 rounded-xl text-base bg-orange group-hover:bg-white dark:group-hover:bg-black dark:group-hover:text-white">
-        Altri {title.toLowerCase()}
+        {t("altri")} {title.toLowerCase()}
       </button>
     </div>
   );

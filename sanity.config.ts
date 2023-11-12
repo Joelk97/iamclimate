@@ -30,6 +30,11 @@ export default defineConfig({
                   .filter('_type == "blogPost"')
               ),
             S.listItem()
+              .title("Progetti")
+              .child(
+                S.documentList().title("Progetti").filter('_type=="project"')
+              ),
+            S.listItem()
               .title("Eventi")
               .child(
                 S.documentList().title("Eventi").filter('_type == "events"')

@@ -7,6 +7,7 @@ import Slug from "./schemas/locale/Slug";
 import String from "./schemas/locale/String";
 import Text from "./schemas/locale/Text";
 import members from "./schemas/members";
+import project from "./schemas/project";
 import slogan from "./schemas/slogan";
 
 export const schema = {
@@ -21,5 +22,6 @@ export const schema = {
     chiSiamo,
     members,
     slogan,
+    project,
   ],
 };

@@ -1,0 +1,27 @@
+{
+  "Index": {
+    "title": "Hei maailma!!",
+    "subtitle": "Kuis menee?",
+    "alertMessage": "Jotaki meni ny pielee!"
+  },
+  "Navigation": {
+    "chiSiamo": "chi siamo",
+    "progetti": "progetti",
+    "eventi": "eventi"
+  },
+  "Home": {
+    "blog": "Blog",
+    "eventi": "Eventi",
+    "altri": "Altri",
+    "dispo": "Disponibilità della valigia",
+    "scopri": "Scopri di più",
+    "riserva": "Riservala ora!",
+    "nome": "Nome",
+    "messaggio": "Messaggio",
+    "invia": "Invia",
+    "contattaci": "Contattaci"
+  },
+  "Progetti": {
+    "progetti": "Progetti"
+  }
+}

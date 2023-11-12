@@ -1,16 +1,17 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import IAmClimate from "../../public/iamclimate.svg";
-import IAmClimateDark from "../../public/iamclimateDark.svg";
+import IAmClimate from "/public/iamclimate.svg";
+import IAmClimateDark from "/public/iamclimateDark.svg";
 import { useTheme } from "next-themes";
-import OrangeBanner from "../components/orangeBanner";
+import OrangeBanner from "../../components/orangeBanner";
 import PortableText from "react-portable-text";
 import React, { ReactChild, useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import { ChiSiamo } from "@/types/chiSiamo-types";
-import MemberCard from "../components/memberCard";
-import Contattaci from "../components/contattaci";
+import MemberCard from "../../components/memberCard";
+import Contattaci from "../../components/contattaci";
+import { useLocale } from "next-intl";
 type props = {
   children: React.ReactNode;
 };
@@ -28,6 +29,7 @@ const serializers = {
   li: (props: props) => <li className="ml-4 list-disc">{props.children}</li>,
 };
 export default function ChiSiamo() {
+  const locale = useLocale();
   const { theme, setTheme } = useTheme();
   const [content, setContent] = useState<ChiSiamo>({
     text: { it: [] },
@@ -71,23 +73,30 @@ export default function ChiSiamo() {
           height={220}
         />
       </Link>
-      <OrangeBanner content="Chi siamo" />
+      <OrangeBanner content={content?.title?.[locale]} />
       <div className="flex flex-col items-center py-10 w-full">
         <div className="w-2/3 flex flex-col gap-10 p-10">
-          <h1 className="text-5xl text-orange">{content?.titleAboutUs?.it}</h1>
-          {content?.text?.it?.length > 0 && (
+          <h1 className="text-5xl text-orange">
+            {content?.titleAboutUs?.[locale]}
+          </h1>
+          {content?.text?.[locale]?.length > 0 && (
             <PortableText
-              content={content?.text?.it}
+              content={content?.text?.[locale]}
               serializers={serializers}
             />
           )}
         </div>
         <div className="w-2/3 flex flex-col gap-10 p-10">
-          <h1 className="text-5xl text-orange">{content?.titleMembers?.it}</h1>
-          <PortableText
-            content={content?.textMembers?.it}
-            serializers={serializers}
-          />
+          <h1 className="text-5xl text-orange">
+            {content?.titleMembers?.[locale]}
+          </h1>
+          {content?.textMembers?.[locale]?.length > 0 && (
+            <PortableText
+              content={content?.textMembers?.[locale]}
+              serializers={serializers}
+            />
+          )}
+
           <div className="grid grid-cols-2 gap-4 gap-y-20 items-center my-20">
             {content?.members?.map((member, i) => {
               return <MemberCard key={i} member={member} />;
@@ -97,10 +106,12 @@ export default function ChiSiamo() {
       </div>
       <Contattaci />
       <div className="w-2/3 flex flex-col gap-10 p-10">
-        <h1 className="text-5xl text-orange">{content?.titleStatutes?.it}</h1>
+        <h1 className="text-5xl text-orange">
+          {content?.titleStatutes?.[locale]}
+        </h1>
         {content?.textStatutes?.it?.length > 0 && (
           <PortableText
-            content={content?.textStatutes?.it}
+            content={content?.textStatutes?.[locale]}
             serializers={serializers}
           />
         )}

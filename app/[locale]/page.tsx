@@ -1,29 +1,33 @@
 "use client";
 
 import Image from "next/image";
-import Navbar from "./components/navbar";
-import IAmClimate from "../public/iamclimate.svg";
-import IAmClimateDark from "../public/iamclimateDark.svg";
-import OrangeBanner from "./components/orangeBanner";
+import Navbar from "../components/navbar";
+import IAmClimate from "/public/iamclimate.svg";
+import IAmClimateDark from "/public/iamclimateDark.svg";
+import OrangeBanner from "../components/orangeBanner";
 import { useTheme } from "next-themes";
+import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
-import ThreeElements from "./components/3elements";
-import Disponibilita from "./components/calendarioDispo";
-import RiservaOra from "./components/riservaOra";
+import ThreeElements from "../components/3elements";
+import Disponibilita from "../components/calendarioDispo";
+import RiservaOra from "../components/riservaOra";
 import React, { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import { useRouter } from "next/navigation";
+type Content = {
+  [key: string]: string;
+};
 interface Slogan {
-  content?: {
-    it: string;
-  };
+  content?: Content;
 }
 const queryBlogs = `*[_type == "blogPost"]|order(date desc)[0..2]`;
 const queryEvents = `*[_type == "events"]|order(date desc)[0..2]`;
 const querySlogan = `*[_type == "slogan"][0]`;
 
-const Home: React.FC = () => {
+const Home = () => {
+  const t = useTranslations("Home");
   const router = useRouter();
+  const locale = useLocale();
   const { theme, setTheme } = useTheme();
   const [blogs, setBlogs] = useState<[] | null>();
   const [events, setEvents] = useState<[] | null>();
@@ -56,11 +60,10 @@ const Home: React.FC = () => {
           height={220}
         />
       </Link>
-
-      <OrangeBanner content={slogan?.content?.it || ""} />
+      <OrangeBanner content={slogan?.content?.[locale] || ""} />
       <div className="grid grid-cols-2 gap-6 w-full">
-        <ThreeElements title="Blog" elements={blogs} />
-        <ThreeElements title="Eventi" elements={events} />
+        <ThreeElements title={t("blog")} elements={blogs} />
+        <ThreeElements title={t("eventi")} elements={events} />
       </div>
       <Disponibilita />
       <RiservaOra />

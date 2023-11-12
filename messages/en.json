@@ -1,0 +1,27 @@
+{
+  "Index": {
+    "title": "Hello world!!",
+    "subtitle": "How is it going?",
+    "alertMessage": "Something went wrong!"
+  },
+  "Navigation": {
+    "chiSiamo": "about us",
+    "progetti": "pojects",
+    "eventi": "events"
+  },
+  "Home": {
+    "blog": "Blog",
+    "eventi": "Events",
+    "altri": "More",
+    "dispo": "Suitcase availability",
+    "scopri": "Learn more",
+    "riserva": "Book it now!",
+    "nome": "Name",
+    "messaggio": "Message",
+    "invia": "Send",
+    "contattaci": "Contact us"
+  },
+  "Progetti": {
+    "progetti": "Projects"
+  }
+}
