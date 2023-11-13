@@ -75,7 +75,7 @@ export default function ChiSiamo() {
       </Link>
       <OrangeBanner content={content?.title?.[locale]} />
       <div className="flex flex-col items-center py-10 w-full">
-        <div className="w-2/3 flex flex-col gap-10 p-10">
+        <div className="w-3/4 lg:w-2/3 flex flex-col gap-10 p-10">
           <h1 className="text-5xl text-orange">
             {content?.titleAboutUs?.[locale]}
           </h1>
@@ -86,7 +86,7 @@ export default function ChiSiamo() {
             />
           )}
         </div>
-        <div className="w-2/3 flex flex-col gap-10 p-10">
+        <div className="w-3/4 lg:w-2/3 flex flex-col gap-10 p-10">
           <h1 className="text-5xl text-orange">
             {content?.titleMembers?.[locale]}
           </h1>
@@ -97,7 +97,7 @@ export default function ChiSiamo() {
             />
           )}
 
-          <div className="grid grid-cols-2 gap-4 gap-y-20 items-center my-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 gap-y-20 items-center my-20">
             {content?.members?.map((member, i) => {
               return <MemberCard key={i} member={member} />;
             })}

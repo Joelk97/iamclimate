@@ -61,7 +61,7 @@ const Home = () => {
         />
       </Link>
       <OrangeBanner content={slogan?.content?.[locale] || ""} />
-      <div className="grid grid-cols-2 gap-6 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
         <ThreeElements title={t("blog")} elements={blogs} />
         <ThreeElements title={t("eventi")} elements={events} />
       </div>

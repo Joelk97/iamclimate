@@ -35,8 +35,8 @@ const Contattaci = () => {
       <h1 className="text-5xl bg-white dark:bg-black dark:text-white">
         {t("contattaci")}
       </h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-        <div className="flex flex-row gap-24">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-8 ">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-24">
           <div className="flex flex-col justify-start">
             <label className="text-2xl" htmlFor="name">
               {t("nome")}
