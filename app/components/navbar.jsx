@@ -30,7 +30,7 @@ const Navbar = () => {
         <ul
           className={`${
             open ? "flex" : "hidden"
-          } md:flex gap-4 md:gap-10 text-base bg-white z-50`}
+          } md:flex gap-4 md:gap-10 text-base bg-white dark:bg-black z-50`}
         >
           <li
             onClick={() => setOpen(false)}

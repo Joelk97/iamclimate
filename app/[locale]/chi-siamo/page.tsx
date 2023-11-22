@@ -52,10 +52,11 @@ export default function ChiSiamo() {
         textMembers,
         titleStatutes,
         testStatutes,
-        "members": *[_type=="members"][]{
+        "members": *[_type=="members"]|order(prio asc)[]{
           name,
           text,
           "memberImage": image.asset -> url,
+          function
         }
       }`);
       setContent(res);
@@ -97,25 +98,26 @@ export default function ChiSiamo() {
             />
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 gap-y-20 items-center my-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 gap-y-20 items-baseline my-20">
             {content?.members?.map((member, i) => {
               return <MemberCard key={i} member={member} />;
             })}
           </div>
         </div>
       </div>
-      <Contattaci />
-      <div className="w-2/3 flex flex-col gap-10 p-10">
-        <h1 className="text-5xl text-orange">
-          {content?.titleStatutes?.[locale]}
-        </h1>
-        {content?.textStatutes?.it?.length > 0 && (
+      <Contattaci />{" "}
+      {content?.textStatutes?.it?.length > 0 && (
+        <div className="w-2/3 flex flex-col gap-10 p-10">
+          <h1 className="text-5xl text-orange">
+            {content?.titleStatutes?.[locale]}
+          </h1>
+
           <PortableText
             content={content?.textStatutes?.[locale]}
             serializers={serializers}
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

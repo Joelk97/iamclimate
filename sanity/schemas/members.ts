@@ -10,7 +10,11 @@ export default defineType({
       name: "name",
       type: "string",
     }),
-
+    defineField({
+      title: "Funzione",
+      name: "function",
+      type: "localeString",
+    }),
     defineField({
       title: "Testo",
       name: "text",
@@ -20,6 +24,11 @@ export default defineType({
       title: "Immagine",
       name: "image",
       type: "image",
+    }),
+    defineField({
+      title: "prio",
+      name: "prio",
+      type: "number",
     }),
   ],
   /*

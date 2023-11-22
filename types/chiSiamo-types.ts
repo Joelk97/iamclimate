@@ -5,6 +5,9 @@ type Index = {
 type IndexPortable = {
   [key: string]: PortableTextBlock[];
 };
+type indexStrings = {
+  [key: string]: string;
+};
 export interface ChiSiamo {
   text: IndexPortable;
   textStatutes: IndexPortable;
@@ -18,6 +21,7 @@ export interface ChiSiamo {
 export type member = {
   memberImage: string;
   name: string;
+  function: indexStrings;
   text: {
     it: string;
     en?: string;
