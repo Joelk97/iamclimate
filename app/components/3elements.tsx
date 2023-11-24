@@ -37,7 +37,10 @@ const ThreeElements: React.FC<ThreeElementsProps> = ({ title, elements }) => {
           elements?.length > 0 &&
           elements.map((e, i) => {
             return (
-              <li className="w-full flex flex-row items-baseline gap-16 text-base ">
+              <li
+                key={i}
+                className="w-full flex flex-row items-baseline gap-16 text-base "
+              >
                 <span className="whitespace-nowrap">
                   {e?.intro?.[locale] && e.date}
                 </span>
