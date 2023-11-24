@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { ThemeSwitcher } from "./theme-switcher";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -9,6 +8,7 @@ import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const pathName = usePathname();
+  console.log(pathName);
   const [firstPath, setFirstPath] = useState();
   const [open, setOpen] = useState(false);
   const t = useTranslations("Navigation");
@@ -17,11 +17,10 @@ const Navbar = () => {
   }, [pathName]);
   return (
     <div
-      className={`flex flex-row w-full items-center justify-between px-16 md:px-[140px]  py-20 ${
+      className={`flex flex-row w-full items-center justify-end px-16 md:px-[140px]  py-20 ${
         firstPath?.[1] == "studio" ? "hidden" : ""
       }`}
     >
-      <ThemeSwitcher />
       <div
         className={`flex flex-row items-center min-h-[40px] ${
           open && "min-w-[312px]"
@@ -30,8 +29,16 @@ const Navbar = () => {
         <ul
           className={`${
             open ? "flex" : "hidden"
-          } md:flex gap-4 md:gap-10 text-base bg-white dark:bg-black z-50`}
+          } md:flex gap-4 md:gap-10 text-base bg-white z-50`}
         >
+          {pathName != "/" && (
+            <li
+              onClick={() => setOpen(false)}
+              className="px-1.5 md:px-4 py-2 hover:bg-[#EAAA3B] hover:rounded-xl hover:cursor-pointer"
+            >
+              <Link href={`/`}>home</Link>
+            </li>
+          )}
           <li
             onClick={() => setOpen(false)}
             className="px-1.5 md:px-4 py-2 hover:bg-[#EAAA3B] hover:rounded-xl hover:cursor-pointer"

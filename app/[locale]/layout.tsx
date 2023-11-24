@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
-import { ThemeProvider } from "../components/theme-provider";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { useLocale, NextIntlClientProvider } from "next-intl";
@@ -31,15 +30,13 @@ export default async function RootLayout({
   }
   return (
     <html lang={locale}>
-      <body className={`${inter.className} bg-white dark:bg-black`}>
+      <body className={`${inter.className} bg-white`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <main className={`bg-white dark:bg-black`}>
-              <Navbar />
-              {children}
-              <Footer />
-            </main>
-          </ThemeProvider>
+          <main className={`bg-white`}>
+            <Navbar />
+            {children}
+            <Footer />
+          </main>
         </NextIntlClientProvider>
       </body>
     </html>

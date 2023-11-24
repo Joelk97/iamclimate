@@ -6,7 +6,7 @@ interface OrangeBannerProps {
 
 const OrangeBanner: React.FC<OrangeBannerProps> = ({ content }) => {
   return (
-    <div className="text-3xl sm:text-4xl md:text-5xl py-[140px] w-full bg-orange flex flex-row justify-center mt-24">
+    <div className="text-xl sm:text-3xl md:text-4xl py-[40px] sm:py-[140px] px-5 text-center w-full bg-orange flex flex-row justify-center mt-24">
       {content}
     </div>
   );

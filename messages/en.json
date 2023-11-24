@@ -19,7 +19,8 @@
     "nome": "Name",
     "messaggio": "Message",
     "invia": "Send",
-    "contattaci": "Contact us"
+    "contattaci": "Contact us",
+    "continuaALeggere": "Read more"
   },
   "Progetti": {
     "progetti": "Projects"

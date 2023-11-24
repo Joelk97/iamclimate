@@ -34,9 +34,7 @@ const RiservaOra = () => {
   }
   return (
     <div className="py-24 flex flex-col gap-16 items-center">
-      <h1 className="text-5xl bg-white dark:bg-black dark:text-white">
-        {t("riserva")}
-      </h1>
+      <h1 className="text-5xl bg-white">{t("riserva")}</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-8">
         <div className="flex flex-col md:flex-row gap-8 md:gap-24">
           <div className="flex flex-col justify-start">
@@ -44,7 +42,7 @@ const RiservaOra = () => {
               {t("nome")}
             </label>
             <input
-              className="h-10 border-4 rounded-lg text-2xl dark:bg-black dark:text-white"
+              className="h-10 border-4 rounded-lg text-2xl"
               name="name"
               id="name"
               type="text"
@@ -57,7 +55,7 @@ const RiservaOra = () => {
               Email
             </label>
             <input
-              className="h-10 border-4 rounded-lg text-2xl dark:bg-black dark:text-white"
+              className="h-10 border-4 rounded-lg text-2xl"
               name="email"
               id="email"
               type="email"
@@ -71,7 +69,7 @@ const RiservaOra = () => {
             {t("messaggio")}
           </label>
           <textarea
-            className="h-20 border-4 rounded-lg text-2xl flex-wrap dark:bg-black dark:text-white"
+            className="h-20 border-4 rounded-lg text-2xl flex-wrap "
             name="message"
             id="message"
             value={message ? message : ""}
@@ -80,7 +78,7 @@ const RiservaOra = () => {
         </div>
         <button
           type="submit"
-          className="self-center mt-8 px-6 py-3 w-1/2 rounded-xl text-2xl dark:text-white dark:bg-orange text-black bg-orange"
+          className="self-center mt-8 px-6 py-3 w-1/2 rounded-xl text-2xl text-black bg-orange"
         >
           {t("invia")}
         </button>

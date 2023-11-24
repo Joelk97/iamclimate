@@ -76,18 +76,20 @@ export default function ChiSiamo() {
       </Link>
       <OrangeBanner content={content?.title?.[locale]} />
       <div className="flex flex-col items-center py-10 w-full">
-        <div className="w-3/4 lg:w-2/3 flex flex-col gap-10 p-10">
-          <h1 className="text-5xl text-orange">
+        <div className="w-3/4 xl:w-2/3 flex flex-col gap-10 p-5 lg:p-10">
+          <h1 className="text-5xl text-orange leading-6">
             {content?.titleAboutUs?.[locale]}
           </h1>
           {content?.text?.[locale]?.length > 0 && (
-            <PortableText
-              content={content?.text?.[locale]}
-              serializers={serializers}
-            />
+            <div className="text-justify">
+              <PortableText
+                content={content?.text?.[locale]}
+                serializers={serializers}
+              />
+            </div>
           )}
         </div>
-        <div className="w-3/4 lg:w-2/3 flex flex-col gap-10 p-10">
+        <div className="w-3/4 xl:w-2/3 flex flex-col gap-10 p-10">
           <h1 className="text-5xl text-orange">
             {content?.titleMembers?.[locale]}
           </h1>
@@ -98,7 +100,7 @@ export default function ChiSiamo() {
             />
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 gap-y-20 items-baseline my-20">
+          <div className="grid grid-cols-1 gap-16 gap-y-24 items-baseline my-20 text-justify">
             {content?.members?.map((member, i) => {
               return <MemberCard key={i} member={member} />;
             })}
