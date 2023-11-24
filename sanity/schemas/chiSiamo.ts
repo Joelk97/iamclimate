@@ -55,6 +55,11 @@ export default defineType({
       name: "textStatutes",
       type: "localeBlockContent",
     }),
+    defineField({
+      title: "File statuto",
+      name: "statutesFile",
+      type: "file",
+    }),
   ],
   preview: {
     select: {

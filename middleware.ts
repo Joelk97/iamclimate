@@ -1,15 +1,20 @@
-import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
 
-export default createMiddleware({
-  // A list of all locales that are supported
+const handleI18nRouting = createMiddleware({
   locales: ["en", "it"],
-
-  // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
   defaultLocale: "it",
 });
 
+export default async function middleware(req: NextRequest) {
+  if (req.nextUrl.locale === "en") {
+    return NextResponse.redirect("/it");
+  }
+
+  // Handle i18n routing
+  return handleI18nRouting(req);
+}
+
 export const config = {
-  // Skip all paths that should not be internationalized
   matcher: ["/((?!api|_next|.*\\..*).*)"],
 };

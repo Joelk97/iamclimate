@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 type Current = {
   current: string;
 };
@@ -28,9 +29,14 @@ interface ThreeElementsProps {
 const ThreeElements: React.FC<ThreeElementsProps> = ({ title, elements }) => {
   const t = useTranslations("Home");
   const locale = useLocale();
+  const pathname = usePathname();
   console.log(elements);
   return (
-    <div className=" group flex flex-col items-center px-10 md:px-20 hover:bg-orange py-24 gap-20">
+    <div
+      className={`group flex flex-col items-center px-10 md:px-20 ${
+        pathname == "/" && "hover:bg-orange"
+      } py-24 gap-20`}
+    >
       <h1 className="text-5xl">{title}</h1>
       <ul className="flex flex-col gap-20">
         {elements != undefined &&
@@ -52,7 +58,11 @@ const ThreeElements: React.FC<ThreeElementsProps> = ({ title, elements }) => {
                     key={i}
                     href={`/blog/${e?.slug?.[locale]?.current}`}
                   >
-                    <button className="w-fit px-3 py-1 rounded-xl text-base bg-orange group-hover:bg-white">
+                    <button
+                      className={`w-fit px-3 py-1 rounded-xl text-base bg-orange ${
+                        pathname == "/" && "group-hover:bg-white"
+                      }`}
+                    >
                       {t("continuaALeggere")}
                     </button>
                   </Link>
@@ -61,9 +71,17 @@ const ThreeElements: React.FC<ThreeElementsProps> = ({ title, elements }) => {
             );
           })}
       </ul>
-      <button className="px-4 py-2 rounded-xl text-2xl bg-orange group-hover:bg-white">
-        {t("altri")} {title.toLowerCase()}
-      </button>
+      {pathname == "/" && (
+        <Link href={`/${title.toLowerCase()}`}>
+          <button
+            className={`px-4 py-2 rounded-xl text-2xl bg-orange ${
+              pathname == "/" && "group-hover:bg-white"
+            }`}
+          >
+            {t("altri")} {title.toLowerCase()}
+          </button>
+        </Link>
+      )}
     </div>
   );
 };

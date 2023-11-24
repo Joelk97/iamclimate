@@ -11,6 +11,7 @@ type indexStrings = {
 export interface ChiSiamo {
   text: IndexPortable;
   textStatutes: IndexPortable;
+  statutesFile: string;
   titleMembers: Index;
   titleStatutes: Index;
   titleAboutUs: Index;

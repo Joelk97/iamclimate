@@ -12,6 +12,7 @@ import { ChiSiamo } from "@/types/chiSiamo-types";
 import MemberCard from "../../components/memberCard";
 import Contattaci from "../../components/contattaci";
 import { useLocale } from "next-intl";
+import { Paperclip } from "lucide-react";
 type props = {
   children: React.ReactNode;
 };
@@ -34,6 +35,7 @@ export default function ChiSiamo() {
   const [content, setContent] = useState<ChiSiamo>({
     text: { it: [] },
     textStatutes: { it: [] },
+    statutesFile: "",
     titleStatutes: { it: "" },
     title: { it: "", en: "" },
     textMembers: { it: [] },
@@ -51,6 +53,7 @@ export default function ChiSiamo() {
         titleMembers,
         textMembers,
         titleStatutes,
+        "statutesFile":statutesFile.asset->url,
         testStatutes,
         "members": *[_type=="members"]|order(prio asc)[]{
           name,
@@ -63,7 +66,7 @@ export default function ChiSiamo() {
     };
     getContent();
   }, []);
-
+  console.log(content);
   return (
     <div className="flex w-full min-h-screen flex-col items-center justify-between font-Futura">
       <Link href={`/`}>
@@ -106,20 +109,31 @@ export default function ChiSiamo() {
             })}
           </div>
         </div>
-      </div>
-      <Contattaci />{" "}
-      {content?.textStatutes?.it?.length > 0 && (
-        <div className="w-2/3 flex flex-col gap-10 p-10">
-          <h1 className="text-5xl text-orange">
-            {content?.titleStatutes?.[locale]}
-          </h1>
-
-          <PortableText
-            content={content?.textStatutes?.[locale]}
-            serializers={serializers}
-          />
-        </div>
-      )}
+      </div>{" "}
+      {content?.textStatutes?.it?.length > 0 ||
+        (content?.statutesFile && (
+          <div className="w-2/3 flex flex-col gap-10 p-10">
+            <h1 className="text-5xl text-orange">
+              {content?.titleStatutes?.[locale]}
+            </h1>
+            {content?.textStatutes?.it?.length > 0 && (
+              <PortableText
+                content={content?.textStatutes?.[locale]}
+                serializers={serializers}
+              />
+            )}
+            <Link
+              target="_blank"
+              href={content.statutesFile ? content.statutesFile : ""}
+            >
+              <div className="flex flex-row gap-2">
+                <Paperclip />
+                <span>{content?.titleStatutes?.[locale]}</span>
+              </div>
+            </Link>
+          </div>
+        ))}
+      <Contattaci />
     </div>
   );
 }
