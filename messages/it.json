@@ -20,7 +20,9 @@
     "messaggio": "Messaggio",
     "invia": "Invia",
     "contattaci": "Contattaci",
-    "continuaALeggere": "Continua a leggere"
+    "continuaALeggere": "Continua a leggere",
+    "eventiPassati": "Eventi passati",
+    "eventiFuturi": "Eventi futuri"
   },
   "Progetti": {
     "progetti": "Progetti"

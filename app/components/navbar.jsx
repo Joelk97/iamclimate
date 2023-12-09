@@ -55,7 +55,7 @@ const Navbar = () => {
             onClick={() => setOpen(false)}
             className="px-1.5 md:px-4 py-2 hover:bg-[#EAAA3B] hover:rounded-xl hover:cursor-pointer"
           >
-            {t("eventi")}
+            <Link href={`/eventi`}>{t("eventi")}</Link>
           </li>
         </ul>
         {open ? (

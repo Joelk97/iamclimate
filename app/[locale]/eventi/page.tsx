@@ -15,9 +15,6 @@ import ThreeElementsWide from "@/app/components/3elementsWide";
 type Content = {
   [key: string]: string;
 };
-interface Slogan {
-  content?: Content;
-}
 type Current = {
   current: string;
 };
@@ -36,12 +33,9 @@ interface Element {
   slug: Slug;
   title: Title;
 }
-
-interface ThreeElementsProps {
-  title: string;
-  elements: Element[] | null | undefined;
+interface Slogan {
+  content?: Content;
 }
-const queryBlogs = `*[_type == "blogPost"]|order(date desc)[0..2]`;
 const queryEvents = `*[_type == "events"]|order(date desc)[0..2]`;
 const querySlogan = `*[_type == "slogan"][0]`;
 
@@ -50,14 +44,12 @@ const Blog = () => {
   const router = useRouter();
   const locale = useLocale();
   const { theme, setTheme } = useTheme();
-  const [blogs, setBlogs] = useState<[] | null>();
   const [events, setEvents] = useState<Element[] | null>();
   const [slogan, setSlogan] = useState<Slogan | null>();
+  const [today, setToday] = useState<string>();
+  const [eventiFuturi, setEventiFuturi] = useState<Element[] | null>();
+  const [eventiPassati, setEventiPassati] = useState<Element[] | null>();
   useEffect(() => {
-    const getBlogs = async () => {
-      const res = await client.fetch(queryBlogs);
-      setBlogs(res);
-    };
     const getEvents = async () => {
       const res = await client.fetch(queryEvents);
       setEvents(res);
@@ -66,11 +58,24 @@ const Blog = () => {
       const res = await client.fetch(querySlogan);
       setSlogan(res);
     };
-    getBlogs();
     getEvents();
     getSlogan();
+    setToday(new Date().toISOString().split("T")[0]); // set the current date
   }, []);
 
+  useEffect(() => {
+    if (events && today) {
+      const fut = events.filter((event) => event.date >= today);
+      fut.length > 0 && setEventiFuturi(fut);
+      const pas = events.filter((event) => event.date < today);
+      pas.length > 0 &&
+        setEventiPassati(events.filter((event) => event.date < today));
+    }
+  }, [events, today]);
+  console.log(today);
+  {
+    events && console.log(events?.[0]?.date);
+  }
   return (
     <div className="flex min-h-screen flex-col items-center justify-between font-Futura">
       <Link href={`/`}>
@@ -83,7 +88,18 @@ const Blog = () => {
       </Link>
       <OrangeBanner content={slogan?.content?.[locale] || ""} />
       <div className="flex flex-col items-center gap-2 sm:gap-6 w-full ">
-        <ThreeElementsWide title={t("blog")} elements={blogs} />
+        {eventiFuturi && (
+          <ThreeElementsWide
+            title={t("eventiFuturi")}
+            elements={eventiFuturi}
+          />
+        )}
+        {eventiPassati && (
+          <ThreeElementsWide
+            title={t("eventiPassati")}
+            elements={eventiPassati}
+          />
+        )}
       </div>
       {/* <Disponibilita />
       <RiservaOra /> */}
