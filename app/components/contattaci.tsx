@@ -26,6 +26,7 @@ const Contattaci = () => {
       });
       const result = await response.json();
       if (result.success) {
+        alert("Messaggio inviato correttamente");
         console.log(result);
       }
     }
