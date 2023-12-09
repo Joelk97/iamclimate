@@ -5,6 +5,7 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { useLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import ReactGA from "react-ga4";
 
 const inter = Inter({ subsets: ["latin"] });
 const locales = ["it", "en"];
@@ -28,6 +29,7 @@ export default async function RootLayout({
   } catch (error) {
     notFound();
   }
+  process.env.ga4 && ReactGA.initialize(process.env.ga4);
   return (
     <html lang={locale}>
       <body className={`${inter.className} bg-white`}>
