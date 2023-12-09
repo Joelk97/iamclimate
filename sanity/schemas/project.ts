@@ -10,7 +10,11 @@ export default defineType({
       name: "title",
       type: "localeString",
     }),
-
+    defineField({
+      title: "Slug",
+      name: "slug",
+      type: "localeSlug",
+    }),
     defineField({
       title: "Intro",
       name: "intro",

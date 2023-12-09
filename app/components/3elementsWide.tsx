@@ -23,12 +23,14 @@ interface Element {
 
 interface ThreeElementsProps {
   title: string;
+  link: string;
   elements: Element[] | null | undefined;
 }
 
 const ThreeElementsWide: React.FC<ThreeElementsProps> = ({
   title,
   elements,
+  link,
 }) => {
   const t = useTranslations("Home");
   const locale = useLocale();
@@ -59,7 +61,9 @@ const ThreeElementsWide: React.FC<ThreeElementsProps> = ({
                   <Link
                     className=" self-end mt-2 hover:cursor-pointer"
                     key={i}
-                    href={`/blog/${e?.slug?.[locale]?.current}`}
+                    href={`/${link.toLowerCase()}/${
+                      e?.slug?.[locale]?.current
+                    }`}
                   >
                     <button
                       className={`w-fit px-3 py-1 rounded-xl text-base bg-orange ${

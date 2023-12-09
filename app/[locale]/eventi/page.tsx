@@ -92,10 +92,12 @@ const Blog = () => {
           <ThreeElementsWide
             title={t("eventiFuturi")}
             elements={eventiFuturi}
+            link="eventi"
           />
         )}
         {eventiPassati && (
           <ThreeElementsWide
+            link="eventi"
             title={t("eventiPassati")}
             elements={eventiPassati}
           />

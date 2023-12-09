@@ -56,7 +56,9 @@ const ThreeElements: React.FC<ThreeElementsProps> = ({ title, elements }) => {
                   <Link
                     className=" self-end mt-2 hover:cursor-pointer"
                     key={i}
-                    href={`/blog/${e?.slug?.[locale]?.current}`}
+                    href={`/${title.toLowerCase()}/${
+                      e?.slug?.[locale]?.current
+                    }`}
                   >
                     <button
                       className={`w-fit px-3 py-1 rounded-xl text-base bg-orange ${

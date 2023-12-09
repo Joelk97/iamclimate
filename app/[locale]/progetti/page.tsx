@@ -14,6 +14,7 @@ import Contattaci from "../../components/contattaci";
 import { useLocale, useTranslations } from "next-intl";
 import { Progetti, Progetto } from "@/types/progetto-types";
 import ProjectCard from "@/app/components/projectCard";
+import ThreeElementsWide from "@/app/components/3elementsWide";
 type props = {
   children: React.ReactNode;
 };
@@ -30,15 +31,7 @@ const serializers = {
   ),
   li: (props: props) => <li className="ml-4 list-disc">{props.children}</li>,
 };
-const ecoligia: Progetto = {
-  content: { it: [], en: [] },
-  title: { it: "Ecoligia", en: "Ecoligia" },
-  intro: {
-    it: "Lorem duis enim eiusmod fugiat eiusmod culpa eiusmod eu dolore est reprehenderit officia occaecat. Sunt incididunt excepteur esse duis non ut qui fugiat labore est exercitation exercitation duis esse. Deserunt id et ea velit enim. Pariatur est cillum aliqua non nostrud do consectetur excepteur culpa nulla non elit sunt. Cillum duis aliqua consectetur in dolor do mollit cupidatat. Mollit proident eu reprehenderit veniam velit deserunt esse qui magna. Quis sint cillum sunt excepteur voluptate.",
-    en: "Incididunt esse tempor proident fugiat minim cillum do est ex quis excepteur mollit Lorem qui. Ipsum irure aute aliqua cillum. Ad sint veniam in est commodo commodo cupidatat anim duis labore exercitation. Reprehenderit dolore ut excepteur irure ad exercitation dolore aliqua. Excepteur laborum sit sit velit proident velit qui ea eiusmod. Cillum eiusmod sint culpa ex tempor ea eu ex ullamco. Non esse eu non do eiusmod elit adipisicing.",
-  },
-  image: "",
-};
+
 export default function Progetti() {
   const t = useTranslations("Progetti");
   const locale = useLocale();
@@ -49,6 +42,8 @@ export default function Progetti() {
       content: { it: [] },
       intro: { it: "", en: "" },
       image: "",
+      date: "",
+      slug: { it: { current: "" } },
     },
   ]);
 
@@ -56,6 +51,8 @@ export default function Progetti() {
     const getContent = async () => {
       const res = await client.fetch(`*[_type == "project"][]{
         content,
+        slug,
+        date,
         title,
         intro,
         "image": image.asset -> url,
@@ -75,14 +72,9 @@ export default function Progetti() {
           height={220}
         />
       </Link>
-      <OrangeBanner content={t("progetti")} />
-      <div className="flex flex-col items-center py-10 w-2/3">
-        <div className="flex flex-row flex-wrap justify-evenly gap-20 items-base my-20">
-          {/* <ProjectCard project={ecoligia} /> */}
-          {content?.map((project, i) => {
-            return <ProjectCard key={i} project={project} />;
-          })}
-        </div>
+      <OrangeBanner content={content.length > 1 ? t("progetti") : "Ecoligia"} />
+      <div className="flex flex-col items-center gap-2 sm:gap-6 w-full ">
+        <ThreeElementsWide title={""} elements={content} link="progetti" />
       </div>
     </div>
   );

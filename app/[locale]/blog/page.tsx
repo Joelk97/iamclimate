@@ -83,7 +83,7 @@ const Blog = () => {
       </Link>
       <OrangeBanner content={slogan?.content?.[locale] || ""} />
       <div className="flex flex-col items-center gap-2 sm:gap-6 w-full ">
-        <ThreeElementsWide title={t("blog")} elements={blogs} />
+        <ThreeElementsWide title={t("blog")} elements={blogs} link="blog" />
       </div>
       {/* <Disponibilita />
       <RiservaOra /> */}

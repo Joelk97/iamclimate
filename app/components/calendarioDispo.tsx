@@ -13,9 +13,6 @@ const Disponibilita = () => {
         style={{ border: "0px", borderRadius: "4px", width: "90%" }}
         height="500"
       ></iframe>
-      <button className="px-6 py-3 rounded-xl text-2xl text-black bg-white">
-        {t("scopri")}
-      </button>
     </div>
   );
 };
